@@ -27,6 +27,7 @@ NSString *const KGModalGradientViewTapped = @"KGModalGradientViewTapped";
 
 @interface KGModalViewController : UIViewController
 @property (weak, nonatomic) KGModalGradientView *styleView;
+@property (weak, nonatomic) UIViewController *contentViewController;
 @end
 
 @interface KGModal()
@@ -92,7 +93,8 @@ NSString *const KGModalGradientViewTapped = @"KGModalGradientViewTapped";
     KGModalViewController *viewController = [[KGModalViewController alloc] init];
     self.window.rootViewController = viewController;
     self.viewController = viewController;
-    
+    viewController.contentViewController = self.contentViewController;
+	
     CGFloat padding = 17;
     CGRect containerViewRect = CGRectInset(contentView.bounds, -padding, -padding);
     containerViewRect.origin.x = containerViewRect.origin.y = 0;
@@ -212,6 +214,18 @@ NSString *const KGModalGradientViewTapped = @"KGModalGradientViewTapped";
     }
 }
 
+- (void)setBackgroundStyleLayer:(CALayer *) style{
+	
+	if (self.containerView.styleLayer != nil){
+		[self.containerView.layer replaceSublayer:self.containerView.styleLayer with:style];
+	}
+	else{
+		[self.containerView.layer addSublayer:style];
+	}
+	
+	self.containerView.styleLayer = style;
+}
+
 - (void)dealloc{
     [self cleanup];
 }
@@ -236,6 +250,47 @@ NSString *const KGModalGradientViewTapped = @"KGModalGradientViewTapped";
     [self.view addSubview:styleView];
     self.styleView = styleView;
 }
+
+- (void) viewWillAppear:(BOOL) animated
+{
+	[super viewWillAppear:animated];
+	
+    if (self.contentViewController)
+    {
+        [self.contentViewController viewWillAppear:animated];
+    }
+}
+
+- (void) viewWillDisappear:(BOOL) animated
+{
+	[super viewWillDisappear:animated];
+    
+    if (self.contentViewController)
+    {
+        [self.contentViewController viewWillAppear:animated];
+    }
+}
+
+- (void) viewDidAppear:(BOOL) animated
+{
+	[super viewDidAppear:animated];
+    
+    if (self.contentViewController)
+    {
+        [self.contentViewController viewDidAppear:animated];
+    }
+}
+
+- (void) viewDidDisappear:(BOOL) animated
+{
+	[super viewDidDisappear:animated];
+    
+    if (self.contentViewController)
+    {
+        [self.contentViewController viewDidDisappear:animated];
+    }
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation{
     return [[KGModal sharedInstance] shouldRotate];
@@ -270,7 +325,6 @@ NSString *const KGModalGradientViewTapped = @"KGModalGradientViewTapped";
         self.styleLayer.backgroundColor = [modalBackgroundColor CGColor];
     }
 }
-
 @end
 
 @implementation KGModalGradientView

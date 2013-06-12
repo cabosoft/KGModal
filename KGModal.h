@@ -30,6 +30,7 @@ typedef NS_ENUM(NSUInteger, KGModalBackgroundDisplayStyle){
 // The background color of the modal window
 // Defaults black with 0.5 opacity
 @property (strong, nonatomic) UIColor *modalBackgroundColor;
+@property (weak, nonatomic) CALayer *backgroundStyleLayer;
 
 // The background display style, can be a transparent radial gradient or a transparent black
 // Defaults to gradient, this looks better but takes a bit more time to display on the retina iPad
