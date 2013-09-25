@@ -203,8 +203,14 @@ NSString *const KGModalGradientViewTapped = @"KGModalGradientViewTapped";
     [self.containerView removeFromSuperview];
     [[[[UIApplication sharedApplication] delegate] window] makeKeyWindow];
     [self.window removeFromSuperview];
-    self.contentViewController = nil;    
+    self.contentViewController = nil;
+    self.containerView = nil;
     self.window = nil;
+}
+
+-(BOOL) isShowing
+{
+	return (self.containerView != nil);
 }
 
 - (void)setModalBackgroundColor:(UIColor *)modalBackgroundColor{

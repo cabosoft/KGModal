@@ -15,6 +15,9 @@ typedef NS_ENUM(NSUInteger, KGModalBackgroundDisplayStyle){
 
 @interface KGModal : NSObject
 
+// Returns YES if the modal is showing, NO otherwise
+@property (nonatomic, readonly) BOOL isShowing;
+
 // Determines if the modal should dismiss if the user taps outside of the modal view
 // Defaults to YES
 @property (nonatomic) BOOL tapOutsideToDismiss;
