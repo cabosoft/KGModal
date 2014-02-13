@@ -7,8 +7,3 @@ user.*.espressostorage
 Sparkle/*.app
 *.zip
 PXListView
-ExampleApp/build/KGModalExample.build/Debug-iphonesimulator/KGModalExample.build/KGModalExample-all-target-headers.hmap
-ExampleApp/build/KGModalExample.build/Debug-iphonesimulator/KGModalExample.build/KGModalExample-generated-files.hmap
-ExampleApp/build/KGModalExample.build/Debug-iphonesimulator/KGModalExample.build/KGModalExample-own-target-headers.hmap
-ExampleApp/build/KGModalExample.build/Debug-iphonesimulator/KGModalExample.build/KGModalExample-project-headers.hmap
-ExampleApp/build/KGModalExample.build/Debug-iphonesimulator/KGModalExample.build/KGModalExample.hmap
