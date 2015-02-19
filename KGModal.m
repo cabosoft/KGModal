@@ -72,6 +72,8 @@ NSString *const KGModalDidHideNotification = @"KGModalDidHideNotification";
     self.borderColor = [UIColor whiteColor];
     self.borderWidth = 1.0f;
     self.showBorder = YES;
+    self.internalBorderStyle = KGModalInternalBorderStyleThin;
+    
     
     return self;
 }
@@ -116,7 +118,7 @@ NSString *const KGModalDidHideNotification = @"KGModalDidHideNotification";
     self.viewController = viewController;
     viewController.contentViewController = self.contentViewController;
 	
-    CGFloat padding = 17;
+    CGFloat padding = _internalBorderStyle;
     CGRect containerViewRect = CGRectInset(contentView.bounds, -padding, -padding);
     containerViewRect.origin.x = containerViewRect.origin.y = 0;
     containerViewRect.origin.x = round(CGRectGetMidX(self.window.bounds)-CGRectGetMidX(containerViewRect));

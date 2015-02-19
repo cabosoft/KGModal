@@ -24,6 +24,12 @@ typedef NS_ENUM(NSUInteger, KGModalCloseButtonType){
     KGModalCloseButtonTypeRight
 };
 
+typedef NS_ENUM(NSUInteger, KGModalInternalBorderStyle){
+    KGModalInternalBorderStyleThin = 14,
+    KGModalInternalBorderStyleNormal = 15,
+    KGModalInternalBorderStyleThick = 17
+};
+
 @interface KGModal : NSObject
 
 // Returns YES if the modal is showing, NO otherwise
@@ -52,6 +58,10 @@ typedef NS_ENUM(NSUInteger, KGModalCloseButtonType){
 // Determins close button type (None/Left/Right)
 // Defaults to Left
 @property (nonatomic) KGModalCloseButtonType closeButtonType;
+
+// Determins internal border width
+// Defaults to Thin
+@property (nonatomic) KGModalInternalBorderStyle internalBorderStyle;
 
 // The background color of the modal window
 // Defaults black with 0.5 opacity
